@@ -5,7 +5,7 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import { useState, useEffect } from "react";
 import Skills from "./scenes/Skills";
 import { motion } from "framer-motion";
-import Projects from "./scenes/Projects";
+// import Projects from "./scenes/Projects";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
@@ -74,14 +74,7 @@ function App() {
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
       />
-      <div
-        className="w-5/6 mx-auto md:h-full"
-        style={{
-          //backgroundColor: "green",
-          border: "5px solid green",
-        }}
-        id="home"
-      >
+      <div className="w-5/6 mx-auto md:h-full">
         {isDesktop && (
           <DotGroup
             selectedPage={selectedPage}
@@ -93,9 +86,6 @@ function App() {
             console.log("entro en home");
             setSelectedPage("home");
           }}
-          style={{
-            backgroundColor: "red",
-          }}
         >
           <Landing setSelectedPage={setSelectedPage} />
         </motion.div>
@@ -105,13 +95,6 @@ function App() {
           onViewportEnter={() => {
             console.log("entro en skills");
             setSelectedPage("skills");
-          }}
-          id="skills"
-          style={{
-            //backgroundColor: "blue",
-            border: "5px solid blue",
-            marginTop: "100px",
-            //marginBottom: "4000px",
           }}
         >
           <Skills setSelectedPage={setSelectedPage} />
@@ -123,11 +106,8 @@ function App() {
             console.log("entro en projects");
             setSelectedPage("projects");
           }}
-          style={{
-            backgroundColor: "pink",
-          }}
         >
-          <Projects setSelectedPage={setSelectedPage} />
+          {/* <Projects setSelectedPage={setSelectedPage} /> */}
         </motion.div>
       </div>
     </div>

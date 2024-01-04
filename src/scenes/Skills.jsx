@@ -62,7 +62,7 @@ const Skills = () => {
 
   return (
     // <section id="skills" className="pt-10 pb-24">
-    <section className="pb-24 ">
+    <section id="skills" className="mt-10 pt-10 pb-24 ">
       <motion.div
         className="md:w-full mt-10"
         initial="hidden"
@@ -81,17 +81,17 @@ const Skills = () => {
         </div>
       </motion.div>
       <motion.div
-        className="md:w-full mt-10"
+        className="md:w-1/3 mt-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ delay: 0.1, duration: 1 }}
+        transition={{ delay: 0.1, duration: 0.5 }}
         variants={{
-          hidden: { opacity: 0, y: -50 },
-          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, x: 50 },
+          visible: { opacity: 1, x: 0 },
         }}
       >
-        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-3 gap-8 text-center py-8 px-12 sm:px-0">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-8 text-center py-8 px-12 sm:px-0">
           {techs.map(({ id, src, title, style }) => (
             <div
               key={id}

@@ -8,7 +8,7 @@ const Landing = ({ setSelectedPage }) => {
 
   return (
     <section
-      //id="home"
+      id="home"
       className=" md:flex md:justify-between md:items-center gap-16 md:h-full py-10"
     >
       {/* IMAGEN SECTION */}
@@ -16,11 +16,11 @@ const Landing = ({ setSelectedPage }) => {
         {isAboveMediumScreens ? (
           <div
             className="relative z-0 ml-20 before:absolute before:-top-20 before:-left-20 before:rounded-t-[400px]
-           before:w-full before:max-w-[400px]  before:h-full before:border-2 before:border-green before:z-[-1]"
+            before:w-full before:max-w-[400px]  before:h-full before:border-2 before:border-green before:z-[-1]"
           >
             <img
               alt="profile"
-              className=" hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[300px] md:max-w-[500px] drop-shadow-custom "
+              className=" hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[300px] md:max-w-[500px] drop-shadow-custom mb-4 "
               src="assets/profile-image.png"
             />
           </div>
@@ -52,7 +52,7 @@ const Landing = ({ setSelectedPage }) => {
             Tobias Santellan {""}
             <span
               className="xs:relative text-secondgreen xs:font-semibold z-20 
-              before:absolute before:-left-[25px] before:-top-[70px] before:z-[-1] text-5xl"
+              before:absolute before:-left-[25px] before:-top-[70px] before:z-[-1] text-4xl"
             >
               Frontend developer
             </span>
