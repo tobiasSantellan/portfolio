@@ -1,23 +1,135 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./scenes/Navbar";
+import DotGroup from "./scenes/DotGroup";
+import Landing from "./scenes/Landing";
+import useMediaQuery from "./hooks/useMediaQuery";
+import { useState, useEffect } from "react";
+import Skills from "./scenes/Skills";
+import { motion } from "framer-motion";
+import Projects from "./scenes/Projects";
 
 function App() {
+  const [selectedPage, setSelectedPage] = useState("home");
+  const [isTopOfPage, setIsTopOfPage] = useState(true);
+  const isDesktop = useMediaQuery("(min-width: 1260px)");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setIsTopOfPage(true);
+        setSelectedPage("home");
+      }
+      if (window.scrollY !== 0) setIsTopOfPage(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    // <div className="app bg-deep-blue">
+    //   <Navbar
+    //     isTopOfPage={isTopOfPage}
+    //     selectedPage={selectedPage}
+    //     setSelectedPage={setSelectedPage}
+    //   />
+    //   <div className="w-5/6 mx-auto md:h-full">
+    //     {isDesktop && (
+    //       <DotGroup
+    //         selectedPage={selectedPage}
+    //         setSelectedPage={setSelectedPage}
+    //       />
+    //     )}
+    //     <motion.div
+    //       margin="0 0 -200px 0"
+    //       amount="all"
+    //       onViewportEnter={() => setSelectedPage("home")}
+    //     >
+    //       <Landing setSelectedPage={setSelectedPage} />
+    //     </motion.div>
+    //   </div>
+    //   <div className="w-5/6 mx-auto md:h-full">
+    //     <motion.div
+    //       margin="0 0 -200px 0"
+    //       amount="all"
+    //       onViewportEnter={() => setSelectedPage("skills")}
+    //     >
+    //       <Skills
+    //         selectedPage={selectedPage}
+    //         setSelectedPage={setSelectedPage}
+    //       />
+    //     </motion.div>
+    //   </div>
+    //   <div className="w-5/6 mx-auto">
+    //     <motion.div
+    //       margin="0 0 -200px 0"
+    //       amount="all"
+    //       onViewportEnter={() => setSelectedPage("projects")}
+    //     >
+    //       <Projects />
+    //     </motion.div>
+    //   </div>
+    // </div>
+    <div className="app bg-deep-blue">
+      <Navbar
+        isTopOfPage={isTopOfPage}
+        selectedPage={selectedPage}
+        setSelectedPage={setSelectedPage}
+      />
+      <div
+        className="w-5/6 mx-auto md:h-full"
+        style={{
+          //backgroundColor: "green",
+          border: "5px solid green",
+        }}
+        id="home"
+      >
+        {isDesktop && (
+          <DotGroup
+            selectedPage={selectedPage}
+            setSelectedPage={setSelectedPage}
+          />
+        )}
+        <motion.div
+          onViewportEnter={() => {
+            console.log("entro en home");
+            setSelectedPage("home");
+          }}
+          style={{
+            backgroundColor: "red",
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <Landing setSelectedPage={setSelectedPage} />
+        </motion.div>
+      </div>
+      <div className="w-5/6 mx-auto md:h-full">
+        <motion.div
+          onViewportEnter={() => {
+            console.log("entro en skills");
+            setSelectedPage("skills");
+          }}
+          id="skills"
+          style={{
+            //backgroundColor: "blue",
+            border: "5px solid blue",
+            marginTop: "100px",
+            //marginBottom: "4000px",
+          }}
+        >
+          <Skills setSelectedPage={setSelectedPage} />
+        </motion.div>
+      </div>
+      <div className="w-5/6 mx-auto">
+        <motion.div
+          onViewportEnter={() => {
+            console.log("entro en projects");
+            setSelectedPage("projects");
+          }}
+          style={{
+            backgroundColor: "pink",
+          }}
+        >
+          <Projects setSelectedPage={setSelectedPage} />
+        </motion.div>
+      </div>
     </div>
   );
 }
